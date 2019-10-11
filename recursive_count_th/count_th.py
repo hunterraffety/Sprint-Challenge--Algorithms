@@ -19,11 +19,11 @@ def count_th(word):
         #print(f"word after check: {word} {len(word)}")
         #word is still word after slicing off the matching th.
         #need to store the remainder of the word in order to run it recursively through the function? what happens if the first two letters coming up next are NOT "th"?
-        leftover_word = word[1:]
-        print(f"leftovers: {leftover_word}")
-        print(f"cache length inside: {len(cache)}") # wont print under "" test case -- only when it passes
-        #print(f"long enough")  #invoke recursion here
-        count_th(leftover_word)  #generates infinite loop when a word longer than 2 is entered
+    leftover_word = word[1:]
+    print(f"leftovers: {leftover_word}")
+    print(f"cache length inside: {len(cache)}") # wont print under "" test case -- only when it passes
+    #print(f"long enough")  #invoke recursion here
+    count_th(leftover_word)  #generates infinite loop when a word longer than 2 is entered
         # lol fires off infinitely til: RecursionError: maximum recursion depth exceeded while calling a Python object
     return len(cache)
     # TBC <-- what does this mean?
@@ -33,8 +33,9 @@ def count_th(word):
     # it will only look for "th" and ignore everything else out outside of the first two letters because of slice
     # i should use a cache list and append the found "th" in it instead of a count and just return the length of the cache len(cache)
     pass
-    
-#print(count_th(""))
-print(count_th("thehehethht"))
-#ok. stop and think. this is invoked and prints 3 times.
-print(count_th("THththeeeee"))
+
+#print(count_th("")) #exit #### exits
+#print(count_th("thehehethht")) #this has 2 #### prints 2
+
+print(count_th("THththeeeee")) #this has 1 TH but only 2 lower #### prints 2
+#print(count_th("asdsfasghgasheeeee")) # this has 0 #### prints 0
