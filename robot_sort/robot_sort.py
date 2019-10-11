@@ -97,14 +97,40 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-        pass
+        # start movement with turning your light on buddy
+        # You have been given a robot with very basic capabilities:
 
+        # It can move left or right.
+        # It can pick up an item
+        # If it tries to pick up an item while already holding one, it will swap the items instead.
+        # It can compare the item it's holding to the item in front of it.
+        # It can switch a light on its head on or off.
+        # we can use the boolean of the robots light to control the loop
+        # if the light is on, the robot will continue moving right
+        # as the robot moves right, compare items
+        # when the light is off, the robot will move back to its original position
+        # any time that we are able to move right and swap, we must do so
+        # whenever we encounter a value that is larger than where we're at, we must swap
+        self.set_light_on()
+        # 
+        while self.light_is_on():  #begins the overall loooop
+            print(f"----------------- light begin turned on: {self._position}")
+            while self.can_move_left():  #reset your position to 0
+                self.swap_item()
+                self.move_left()  # reset your position to be @ 0
+                print(f"move_left loop: {self._position}")
+            self.set_light_off() #turn the light off and begin and skip this subset
+            while self.can_move_right(): #moving right just means we're able to swap an item and continue doing so == while this is true_____ do these things - this fires until we need to turn the light on
+                self.swap_item() # swap and move forward ---------> self._item, self._list[self._position] = self._list[self._position]
+                print(f"first swap in move_right loop: {self._position}")
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
     # with `python robot_sort.py`
 
-    l = [15, 41, 58, 49, 26, 4, 28, 8, 61, 60, 65, 21, 78, 14, 35, 90, 54, 5, 0, 87, 82, 96, 43, 92, 62, 97, 69, 94, 99, 93, 76, 47, 2, 88, 51, 40, 95, 6, 23, 81, 30, 19, 25, 91, 18, 68, 71, 9, 66, 1, 45, 33, 3, 72, 16, 85, 27, 59, 64, 39, 32, 24, 38, 84, 44, 80, 11, 73, 42, 20, 10, 29, 22, 98, 17, 48, 52, 67, 53, 74, 77, 37, 63, 31, 7, 75, 36, 89, 70, 34, 79, 83, 13, 57, 86, 12, 56, 50, 55, 46]
+    l = [5, 4, 3, 2, 1]
+    # unravel this and swap it. get the 1 to the 5 and the 2 to the 4 and the 3 stays
+    # l = [15, 41, 58, 49, 26, 4, 28, 8, 61, 60, 65, 21, 78, 14, 35, 90, 54, 5, 0, 87, 82, 96, 43, 92, 62, 97, 69, 94, 99, 93, 76, 47, 2, 88, 51, 40, 95, 6, 23, 81, 30, 19, 25, 91, 18, 68, 71, 9, 66, 1, 45, 33, 3, 72, 16, 85, 27, 59, 64, 39, 32, 24, 38, 84, 44, 80, 11, 73, 42, 20, 10, 29, 22, 98, 17, 48, 52, 67, 53, 74, 77, 37, 63, 31, 7, 75, 36, 89, 70, 34, 79, 83, 13, 57, 86, 12, 56, 50, 55, 46]
 
     robot = SortingRobot(l)
 
