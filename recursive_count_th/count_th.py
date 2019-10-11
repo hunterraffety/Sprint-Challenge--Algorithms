@@ -14,7 +14,8 @@ def count_th(word, count=0):
     if len(word) < 2:  #base case
         #print(f"not long enough")
         #cache = [] cant reset here
-        return
+        #count = 0
+        return count
     elif word[0:2] == "th":  # needs to be elif
         # add word to cache here?
         cache.append(word[0:2])
@@ -26,7 +27,7 @@ def count_th(word, count=0):
     print(f"leftovers: {leftover_word}")
     print(f"cache length inside: {len(cache)}") # wont print under "" test case -- only when it passes
     #print(f"long enough")  #invoke recursion here
-    count_th(leftover_word)  #generates infinite loop when a word longer than 2 is entered
+    count_th(leftover_word, count)  #generates infinite loop when a word longer than 2 is entered
         # lol fires off infinitely til: RecursionError: maximum recursion depth exceeded while calling a Python object
 
 
