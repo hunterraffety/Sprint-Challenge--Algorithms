@@ -24,8 +24,8 @@ def count_th(word, count=0):
         #word is still word after slicing off the matching th.
         #need to store the remainder of the word in order to run it recursively through the function? what happens if the first two letters coming up next are NOT "th"?
     leftover_word = word[1:]
-    print(f"leftovers: {leftover_word}")
-    print(f"cache length inside: {len(cache)}") # wont print under "" test case -- only when it passes
+    #print(f"leftovers: {leftover_word}")
+    #print(f"cache length inside: {len(cache)}") # wont print under "" test case -- only when it passes
     #print(f"long enough")  #invoke recursion here
     count_th(leftover_word, count)  #generates infinite loop when a word longer than 2 is entered
         # lol fires off infinitely til: RecursionError: maximum recursion depth exceeded while calling a Python object
