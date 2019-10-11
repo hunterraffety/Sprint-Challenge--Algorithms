@@ -11,15 +11,21 @@ def count_th(word):
     #print(f"the word: {word}")
     #print(f"length: {len(word)}")
     if len(word) < 2:  #base case
-        print(f"not long enough")
+        #print(f"not long enough")
         return
     elif word[0:2] == "th":  # needs to be elif
-        test_word = word[0:2]
-        print(f"test word: {test_word}")
-        print(f"word after check: {word} {len(word)}")
+        # add word to cache here?
+        cache.append(word[0:2])
+        #print(f"word after check: {word} {len(word)}")
+        #word is still word after slicing off the matching th.
+        #need to store the remainder of the word in order to run it recursively through the function? what happens if the first two letters coming up next are NOT "th"?
+        leftover_word = word[1:]
+        print(f"leftovers: {leftover_word}")
         print(f"cache length inside: {len(cache)}") # wont print under "" test case -- only when it passes
         #print(f"long enough")  #invoke recursion here
-        count_th(f"reinvokation of count_th: {word}") #generates infinite loop when a word longer than 2 is entered
+        count_th(leftover_word)  #generates infinite loop when a word longer than 2 is entered
+        # lol fires off infinitely til: RecursionError: maximum recursion depth exceeded while calling a Python object
+    return len(cache)
     # TBC <-- what does this mean?
     # initial thoughts
     # cant use a for loop
@@ -31,4 +37,4 @@ def count_th(word):
 #print(count_th(""))
 print(count_th("thehehethht"))
 #ok. stop and think. this is invoked and prints 3 times.
-#print(count_th("THththeeeee"))
+print(count_th("THththeeeee"))
